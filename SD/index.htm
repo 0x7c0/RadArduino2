@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WiFi Radar</title>
+		<meta charset=utf-8>
+		<script src='script.js'></script>
+		<link rel=stylesheet type=text/css href=./style.css>
+	</head>
+	<body>
+		<div class='focus center'>
+			<code>WiFi Radar Control Room</code>
+		</div>
+		<div class='cross sf_w'>
+			Y to 90° <input class=sf_w id=y_up type=number max=90 min=0 placeholder='0°' readonly>
+			<a id=a_up class=point title=up onclick='Click(this);'><img id=i_up src='./menu.png' height='64' width='64' alt=up></a>
+			<div class=sf_h>
+			<select id=sel class='sf_w abs' onchange='Menu();'>
+				<option value=5>5</option>
+				<option value=10>10</option>
+				<option value=20  selected>20</option>
+				<option value=30>30</option>
+			</select>
+			<div id=m_le class='lateral rel sf_h'> 0° to X <input class=sf_w id=x_dw type=number max=180 min=0 placeholder='0°' readonly></div>
+			<div id=m_ri class='lateral rel sf_h'>X to 180°<input class=sf_w id=x_up type=number max=180 min=0 placeholder='0°' readonly></div>
+			<a id=a_le class='rel point' title=left  onclick='Click(this);'><img id=i_le src='./menu.png' height='64' width='64' alt=left ></a>
+			<a id=a_ri class='rel point' title=right onclick='Click(this);'><img id=i_ri src='./menu.png' height='64' width='64' alt=right></a>
+			</div>
+			<a id=a_dw class=point title=down onclick='Click(this);'><img id=i_dw src='./menu.png' height='64' width='64' alt=down></a>
+			0° to Y <input class=sf_w id=y_dw type=number max=90 min=0 placeholder='0°' readonly>
+			<div class='angle_X angle_t abs center' style="z-index:1;">Prevision X° Angle</div>
+			<div class='angle_Y angle_t abs center' style="z-index:1;">Prevision Y° Angle</div>
+			<img id=angle_X  class='angle_X abs' src='./angle.png' height='256' width='256' alt=X>
+			<img id=angle_Y  class='angle_Y abs' src='./angle.png' height='256' width='256' alt=Y>
+			<div class='range_X angle_t abs center'><input id=Xr type=range max=180 min=0 onchange='Move(this,"X")'></div>
+			<div class='range_Y angle_t abs center'><input id=Yr type=range max=90  min=0 onchange='Move(this,"Y")'></div>
+		</div>
+		<div class='focus center'>
+			<!-- <form action=index.html method=get> -->
+				X°:<input class=sf_w id=Xn type=number max=180 min=0 placeholder='0°' required onchange='Move(this,"X");' autofocus>
+				Y°:<input class=sf_w id=Yn type=number max=90  min=0 placeholder='0°' required onchange='Move(this,"Y");'>
+				<button type=button onclick='SendAll();'>Send</button>
+				<button type=button onclick='Save();'>Save</button>
+				<button type=button onclick='Reset();'  >Reset</button>
+			<!-- </form> -->
+		</div>
+		<div class='focus center sf_w point'>
+			<a onclick='Receive();' title=refresh><img src='./home.png' height='64' width='64' alt=refresh></a>
+		</div>
+		<input type=hidden id=X value=0>
+		<input type=hidden id=Y value=0>
+		<div style="font-size:11px;">
+			Debug:
+			<p>Lag: <label id=lag></label> ms</p>
+			<p>Temp: <label id=temp></label> C°</p>
+			<p>Photo: <label id=light></label></p>
+			<p>Server: <label id=network></label></p>
+			<p id=file>File:</p>
+		<div>
+	</body>
+</html>
