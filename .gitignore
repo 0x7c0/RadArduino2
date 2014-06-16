@@ -21,3 +21,11 @@
 *.i*86
 *.x86_64
 *.hex
+
+# Personal
+/OLD
+
+# OS and Ide
+.DS_Store
+.project
+.settings
